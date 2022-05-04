@@ -59,11 +59,11 @@ class OmieApi:
         response = requests.post('https://app.omie.com.br/api/v1/' + metodo_json['caminho'], json=json_data)
         return response.json()
 
-    def __obter_empresa(self, numero_empresa):
+    def __obter_empresa(self, empresa):
         load_dotenv()
 
-        self.__key = os.getenv(str(numero_empresa) + '_KEY')
-        self.__secret = os.getenv(str(numero_empresa) + '_SECRET')
+        self.__key = os.getenv(empresa + '_KEY')
+        self.__secret = os.getenv(empresa + '_SECRET')
 
     def __converter_json(self, metodo):
 
