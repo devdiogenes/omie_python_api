@@ -5,19 +5,12 @@ from dotenv import load_dotenv
 
 class Omie:
     def __init__(self, empresa):
-
+        
         self.ListarCenarios = OmieListarCenarios(empresa)
         self.ListarClientes = OmieListarClientes(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
 
-        self.empresa = empresa
-        load_dotenv()
-
-    def key(self): return os.getenv(self.empresa + '_KEY')
-    def secret(self): return os.getenv(self.empresa + '_SECRET')
-    def cliente_imposto(self): return os.getenv(self.empresa + '_CLIENTE_IMPOSTO')
-    def cenario_imposto(self): return os.getenv(self.empresa + '_CENARIO_IMPOSTO')
 
 class OmieListarCenarios:
     def __init__(self, empresa):
@@ -99,10 +92,11 @@ class OmieApi:
     def __init__(self):
         self.caminho = ""
         self.call = ""
+        load_dotenv()
 
     def executar(self, metodo, empresa):
 
-        self.__obter_empresa(empresa)
+        self.empresa = empresa
 
         metodo_json = self.__converter_json(metodo)
 
@@ -112,8 +106,8 @@ class OmieApi:
         parametros.pop('empresa')
 
         json_data = {}
-        json_data['app_key'] = self.__key
-        json_data['app_secret'] = self.__secret
+        json_data['app_key'] = self.key()
+        json_data['app_secret'] = self.secret()
         json_data['call'] = metodo_json['call']
         json_data['param'] = [parametros]
         
@@ -138,3 +132,8 @@ class OmieApi:
             novo[atributo] = valor     
 
         return novo
+
+    def key(self): return os.getenv(self.empresa + '_KEY')
+    def secret(self): return os.getenv(self.empresa + '_SECRET')
+    def cliente_imposto(self): return os.getenv(self.empresa + '_CLIENTE_IMPOSTO')
+    def cenario_imposto(self): return os.getenv(self.empresa + '_CENARIO_IMPOSTO')
