@@ -27,7 +27,7 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 *MinhaOutraEmpresa_KEY = "APP_KEY da sua segunda empresa"*
 
-*MinhaOutraEmpresa_SECRET = "APP_SECRET da sua segunda empresa"*
+*MinhaOutraEmpresa_SECRET = "APP_SECRET da sua segunda empresa"*<br>
 
 *MinhaOutraEmpresa_CLIENTE_IMPOSTO = 'Cliente padrão para consulta de impostos da sua segunda empresa'*
 
@@ -35,7 +35,7 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 ### Após, instale as bibliotecas necessárias, rodando dentro dessa pasta o comando:
 
-*pip install -r requirements.txt*
+*pip install -r requirements.txt*<br>
 
 ### E então, você pode usar o arquivo *exemplo.py* para entender como essa biblioteca funciona, e se basear.
 
