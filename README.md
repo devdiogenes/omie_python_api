@@ -29,4 +29,6 @@ E então, você pode usar o arquivo *exemplo.py* para entender como essa bibliot
 
 *ListarCenarios - executar()
 
+*ListarClientes - executar(), todos()
+
 *ListarProdutos - executar(), todos()

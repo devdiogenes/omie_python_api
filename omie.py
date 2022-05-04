@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 class Omie:
     def __init__(self, empresa):
         self.ListarCenarios = OmieListarCenarios(empresa)
+        self.ListarClientes = OmieListarClientes(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
-
 
 class OmieListarCenarios:
     def __init__(self, empresa):
@@ -20,8 +20,33 @@ class OmieListarCenarios:
     def executar(self):
         return OmieApi().executar(self, self.empresa) 
 
-class OmieListarProdutos:
+class OmieListarClientes:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "geral/clientes/"
+        self.call = 'ListarClientes'
+        self.pagina = 1
+        self.registros_por_pagina = 50
 
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
+
+    def todos(self):
+        nome_lista_omie = "clientes_cadastro"
+        self.registros_por_pagina = 500
+        consulta = self.executar()
+        total_de_paginas = consulta['total_de_paginas']
+        lista = consulta[nome_lista_omie]
+        while self.pagina < total_de_paginas:
+            self.pagina += 1
+            produtos = self.executar()[nome_lista_omie]
+            for produto in produtos:
+                lista.append(produto)
+
+        return lista
+
+
+class OmieListarProdutos:
     def __init__(self, empresa):
         self.empresa = empresa
         self.caminho = "geral/produtos/"
@@ -35,17 +60,21 @@ class OmieListarProdutos:
         return OmieApi().executar(self, self.empresa)
 
     def todos(self):
-        self.registros_por_pagina = 100
+        nome_lista_omie = "produto_servico_cadastro"
+        self.registros_por_pagina = 500
         consulta = self.executar()
         total_de_paginas = consulta['total_de_paginas']
-        lista = consulta['produto_servico_cadastro']
+        lista = consulta[nome_lista_omie]
         while self.pagina < total_de_paginas:
             self.pagina += 1
-            produtos = self.executar()['produto_servico_cadastro']
+            produtos = self.executar()[nome_lista_omie]
             for produto in produtos:
                 lista.append(produto)
 
         return lista
+
+
+
 
 class OmieApi:
     def __init__(self):

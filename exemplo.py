@@ -3,8 +3,8 @@ from omie import *
 
 exemplo = Omie("EmpresaTeste")
 
-exemplo.ListarCenarios.nRegPorPagina = 20
+exemplo.ListarClientes.registros_por_pagina = 2
 
-exec = exemplo.ListarCenarios.executar()
+exec = exemplo.ListarClientes.executar()
 
 print(exec)
