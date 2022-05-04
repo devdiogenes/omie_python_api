@@ -8,6 +8,7 @@ class Omie:
 
         self.ListarCenarios = OmieListarCenarios(empresa)
         self.ListarClientes = OmieListarClientes(empresa)
+        self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
 
         self.empresa = empresa
@@ -54,6 +55,18 @@ class OmieListarClientes:
 
         return lista
 
+class OmieListarImpostosCenario:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "geral/cenarios/"
+        self.call = 'ListarImpostosCenario'
+        self.consumo_final = "N"
+        self.codigo_produto = 0       
+
+    def executar(self):
+        self.codigo_cliente_omie = Omie(self.empresa).cliente_imposto()
+        self.codigo_cenario = Omie(self.empresa).cenario_imposto()
+        return OmieApi().executar(self, self.empresa)
 
 class OmieListarProdutos:
     def __init__(self, empresa):

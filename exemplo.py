@@ -1,10 +1,10 @@
 from omie import *
 
 
-exemplo = Omie("EmpresaTeste")
+exemplo = Omie("EmpresaTeste").ListarClientes
 
-exemplo.ListarClientes.registros_por_pagina = 2
+exemplo.registros_por_pagina = 2
 
-exec = exemplo.ListarClientes.executar()
+exec = exemplo.executar()
 
 print(exec)
