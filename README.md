@@ -9,7 +9,7 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 *EmpresaTeste_SECRET = 'fed2163e2e8dccb53ff914ce9e2f1258'*
 
-#### Essas são as credenciais da API teste da Omie. 
+#### Essas são as credenciais da API teste da Omie. <br>
 
 ### Para adicionar suas empresas, utilize o mesmo padrão, mudando apenas o nome inicial no nome da variável e as informações. Exemplo:
 
@@ -19,11 +19,11 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 *MinhaOutraEmpresa_KEY = "APP_KEY da sua segunda empresa"*
 
-*MinhaOutraEmpresa_SECRET = "APP_SECRET da sua segunda empresa"*
+*MinhaOutraEmpresa_SECRET = "APP_SECRET da sua segunda empresa"*<br>
 
 ### Após, instale as bibliotecas necessárias, rodando dentro dessa pasta o comando:
 
-*pip install -r requirements.txt*
+*pip install -r requirements.txt*<br>
 
 ### E então, você pode usar o arquivo *exemplo.py* para entender como essa biblioteca funciona, e se basear.
 
