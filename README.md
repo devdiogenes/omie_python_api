@@ -9,7 +9,7 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 *EmpresaTeste_SECRET = 'fed2163e2e8dccb53ff914ce9e2f1258'*
 
-*EmpresaTeste_CLIENTE_IMPOSTO = ''*
+*EmpresaTeste_CLIENTE_IMPOSTO = 1*
 
 *EmpresaTeste_CENARIO_IMPOSTO = 1*
 
@@ -21,9 +21,9 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 *MinhaEmpresa_SECRET = "APP_SECRET da sua primeira empresa"*
 
-*MinhaEmpresa_CLIENTE_IMPOSTO = 'Cliente padrão para consulta de impostos da sua empresa (Código de integração)'*
+*MinhaEmpresa_CLIENTE_IMPOSTO = 'Cliente padrão para consulta de impostos da sua empresa (Código API Omie)'*
 
-*MinhaEmpresa_CENARIO_IMPOSTO = Número do cenário de impostos da sua empresa*
+*MinhaEmpresa_CENARIO_IMPOSTO = Número do cenário de impostos da sua empresa (Código API Omie)*
 
 *MinhaOutraEmpresa_KEY = "APP_KEY da sua segunda empresa"*
 
