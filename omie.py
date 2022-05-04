@@ -5,7 +5,20 @@ from dotenv import load_dotenv
 
 class Omie:
     def __init__(self, empresa):
+        self.ListarCenarios = OmieListarCenarios(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
+
+
+class OmieListarCenarios:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "geral/cenarios/"
+        self.call = 'ListarCenarios'
+        self.nPagina = 1
+        self.nRegPorPagina = 20
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
 
 class OmieListarProdutos:
 

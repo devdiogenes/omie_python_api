@@ -1,10 +1,10 @@
 from omie import *
 
+
 exemplo = Omie("EmpresaTeste")
 
-exemplo.ListarProdutos.registros_por_pagina = 1
-exemplo.ListarProdutos.apenas_importado_api = "S"
+exemplo.ListarCenarios.nRegPorPagina = 20
 
-exec = exemplo.ListarProdutos.executar()
+exec = exemplo.ListarCenarios.executar()
 
 print(exec)
