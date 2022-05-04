@@ -28,5 +28,4 @@ E então, você pode usar o arquivo *exemplo.py* para entender como essa bibliot
 ## Métodos já configurados: 
 
 *ListarCenarios - executar()
-
 *ListarProdutos - executar(), todos()
