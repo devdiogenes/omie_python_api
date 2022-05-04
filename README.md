@@ -30,7 +30,5 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 ## Métodos já configurados: 
 
 *ListarCenarios - executar()
-
 *ListarClientes - executar(), todos()
-
 *ListarProdutos - executar(), todos()
