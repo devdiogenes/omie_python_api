@@ -5,9 +5,18 @@ from dotenv import load_dotenv
 
 class Omie:
     def __init__(self, empresa):
+
         self.ListarCenarios = OmieListarCenarios(empresa)
         self.ListarClientes = OmieListarClientes(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
+
+        self.empresa = empresa
+        load_dotenv()
+
+    def key(self): return os.getenv(self.empresa + '_KEY')
+    def secret(self): return os.getenv(self.empresa + '_SECRET')
+    def cliente_imposto(self): return os.getenv(self.empresa + '_CLIENTE_IMPOSTO')
+    def cenario_imposto(self): return os.getenv(self.empresa + '_CENARIO_IMPOSTO')
 
 class OmieListarCenarios:
     def __init__(self, empresa):
@@ -73,9 +82,6 @@ class OmieListarProdutos:
 
         return lista
 
-
-
-
 class OmieApi:
     def __init__(self):
         self.caminho = ""
@@ -102,10 +108,8 @@ class OmieApi:
         return response.json()
 
     def __obter_empresa(self, empresa):
-        load_dotenv()
-
-        self.__key = os.getenv(empresa + '_KEY')
-        self.__secret = os.getenv(empresa + '_SECRET')
+        self.__key = Omie(empresa).key()
+        self.__secret = Omie(empresa).secret()
 
     def __converter_json(self, metodo):
 
