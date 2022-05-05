@@ -10,6 +10,7 @@ class Omie:
         self.ListarClientes = OmieListarClientes(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
+        self.ListarTabelaItens = OmieListarTabelaItens(empresa)
         self.ListarTabelasPreco = OmieListarTabelasPreco(empresa)
 
 
@@ -88,6 +89,19 @@ class OmieListarProdutos:
                 lista.append(produto)
 
         return lista
+
+class OmieListarTabelaItens:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "produtos/tabelaprecos/"
+        self.call = 'ListarTabelaItens'
+        self.nPagina = 1
+        self.nRegPorPagina = 20
+        self.nCodTabPreco = 0
+        self.cCodIntTabPreco = ""
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
 
 class OmieListarTabelasPreco:
     def __init__(self, empresa):
