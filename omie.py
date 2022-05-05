@@ -113,11 +113,7 @@ class OmieApi:
         
         response = requests.post('https://app.omie.com.br/api/v1/' + metodo_json['caminho'], json=json_data)
         return response.json()
-
-    def __obter_empresa(self, empresa):
-        self.__key = Omie(empresa).key()
-        self.__secret = Omie(empresa).secret()
-
+        
     def __converter_json(self, metodo):
 
         antigo = metodo.__dict__
