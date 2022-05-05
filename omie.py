@@ -10,6 +10,7 @@ class Omie:
         self.ListarClientes = OmieListarClientes(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
+        self.ListarTabelasPreco = OmieListarTabelasPreco(empresa)
 
 
 class OmieListarCenarios:
@@ -88,6 +89,17 @@ class OmieListarProdutos:
 
         return lista
 
+class OmieListarTabelasPreco:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "produtos/tabelaprecos/"
+        self.call = 'ListarTabelasPreco'
+        self.nPagina = 1
+        self.nRegPorPagina = 20
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
+
 class OmieApi:
     def __init__(self):
         self.caminho = ""
@@ -113,7 +125,7 @@ class OmieApi:
         
         response = requests.post('https://app.omie.com.br/api/v1/' + metodo_json['caminho'], json=json_data)
         return response.json()
-        
+
     def __converter_json(self, metodo):
 
         antigo = metodo.__dict__
