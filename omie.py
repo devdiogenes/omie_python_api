@@ -47,7 +47,6 @@ class OmieListarClientes:
             produtos = self.executar()[nome_lista_omie]
             for produto in produtos:
                 lista.append(produto)
-
         return lista
 
 class OmieListarImpostosCenario:
@@ -87,7 +86,6 @@ class OmieListarProdutos:
             produtos = self.executar()[nome_lista_omie]
             for produto in produtos:
                 lista.append(produto)
-
         return lista
 
 class OmieListarTabelaItens:
@@ -103,6 +101,19 @@ class OmieListarTabelaItens:
     def executar(self):
         return OmieApi().executar(self, self.empresa) 
 
+    def todos(self):
+        nome_lista_omie = "listaTabelaPreco"
+        self.nRegPorPagina = 500
+        consulta = self.executar()
+        total_de_paginas = consulta['nTotPaginas']
+        lista = consulta[nome_lista_omie]['itensTabela']
+        while self.nPagina < total_de_paginas:
+            self.nPagina += 1
+            produtos = self.executar()[nome_lista_omie]['itensTabela']
+            for produto in produtos:
+                lista.append(produto)
+        return lista
+
 class OmieListarTabelasPreco:
     def __init__(self, empresa):
         self.empresa = empresa
@@ -113,6 +124,7 @@ class OmieListarTabelasPreco:
 
     def executar(self):
         return OmieApi().executar(self, self.empresa) 
+
 
 class OmieApi:
     def __init__(self):
@@ -136,7 +148,7 @@ class OmieApi:
         json_data['app_secret'] = self.secret()
         json_data['call'] = metodo_json['call']
         json_data['param'] = [parametros]
-        
+
         response = requests.post('https://app.omie.com.br/api/v1/' + metodo_json['caminho'], json=json_data)
         return response.json()
 
