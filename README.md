@@ -41,7 +41,9 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 ## Métodos já configurados: 
 
++ **ConsultarCliente** - executar()
 + **ConsultarPedido** - executar()
++ **ConsultarVendedor** - executar()
 + **ListarCenarios** - executar()
 + **ListarClientes** - executar(), todos()
 + **ListarImpostosCenario** - executar()
