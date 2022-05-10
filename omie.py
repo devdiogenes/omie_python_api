@@ -19,7 +19,7 @@ class OmieConsultarPedido:
         self.empresa = empresa
         self.caminho = "produtos/pedido/"
         self.call = "ConsultarPedido"
-        self.codigo_pedido = 25953530
+        self.codigo_pedido = 0
 
     def executar(self):
         return OmieApi().executar(self, self.empresa)   
