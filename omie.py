@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 class Omie:
     def __init__(self, empresa):
         
+        self.AlterarProduto = OmieAlterarProduto(empresa)
         self.ConsultarCliente = OmieConsultarCliente(empresa)
         self.ConsultarPedido = OmieConsultarPedido(empresa)
         self.ConsultarVendedor = OmieConsultarVendedor(empresa)
@@ -15,6 +16,16 @@ class Omie:
         self.ListarProdutos = OmieListarProdutos(empresa)
         self.ListarTabelaItens = OmieListarTabelaItens(empresa)
         self.ListarTabelasPreco = OmieListarTabelasPreco(empresa)
+
+class OmieAlterarProduto:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "geral/produtos/"
+        self.call = "AlterarProduto"
+        self.codigo_produto = 0
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
 
 class OmieConsultarCliente:
     def __init__(self, empresa):
