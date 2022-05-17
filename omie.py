@@ -13,6 +13,7 @@ class Omie:
         self.ListarCenarios = OmieListarCenarios(empresa)
         self.ListarClientes = OmieListarClientes(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
+        self.ListarLocaisEstoque = OmieListarLocaisEstoque(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
         self.ListarTabelaItens = OmieListarTabelaItens(empresa)
         self.ListarTabelasPreco = OmieListarTabelasPreco(empresa)
@@ -106,6 +107,17 @@ class OmieListarImpostosCenario:
         self.codigo_cliente_omie = OmieApi(self.empresa).cliente_imposto()
         self.codigo_cenario = OmieApi(self.empresa).cenario_imposto()
         return OmieApi().executar(self, self.empresa)
+
+class OmieListarLocaisEstoque:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "estoque/local/"
+        self.call = 'ListarLocaisEstoque'
+        self.nPagina = 1
+        self.nRegPorPagina = 20
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
 
 class OmieListarProdutos:
     def __init__(self, empresa):
