@@ -13,6 +13,8 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 *EmpresaTeste_CENARIO_IMPOSTO = 1*
 
+*EmpresaTeste_LOCAL_DE_ESTOQUE = 464449588*
+
 #### Essas são as credenciais da API teste da Omie. 
 
 ### Para adicionar suas empresas, utilize o mesmo padrão, mudando apenas o nome inicial no nome da variável e as informações. Exemplo:
@@ -25,6 +27,8 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 
 *MinhaEmpresa_CENARIO_IMPOSTO = Número do cenário de impostos da sua empresa (Código API Omie)*
 
+*MinhaEmpresa_LOCAL_DE_ESTOQUE = Número do local de estoque padrão da sua empresa (Código API Omie)*
+
 *MinhaOutraEmpresa_KEY = "APP_KEY da sua segunda empresa"*
 
 *MinhaOutraEmpresa_SECRET = "APP_SECRET da sua segunda empresa"*<br>
@@ -32,6 +36,8 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 *MinhaOutraEmpresa_CLIENTE_IMPOSTO = 'Cliente padrão para consulta de impostos da sua segunda empresa'*
 
 *MinhaOutraEmpresa_CENARIO_IMPOSTO = Número do cenário de impostos da sua segunda empresa*
+
+*MinhaOutraEmpresa_LOCAL_DE_ESTOQUE = Número do local de estoque padrão da sua segunda empresa*
 
 ### Após, instale as bibliotecas necessárias, rodando dentro dessa pasta o comando:
 
