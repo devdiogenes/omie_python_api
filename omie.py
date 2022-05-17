@@ -1,4 +1,3 @@
-import sys
 import os
 import requests
 from dotenv import load_dotenv
@@ -14,6 +13,7 @@ class Omie:
         self.ListarClientes = OmieListarClientes(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarLocaisEstoque = OmieListarLocaisEstoque(empresa)
+        self.ListarPosEstoque = OmieListarPosEstoque(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
         self.ListarTabelaItens = OmieListarTabelaItens(empresa)
         self.ListarTabelasPreco = OmieListarTabelasPreco(empresa)
@@ -118,6 +118,33 @@ class OmieListarLocaisEstoque:
 
     def executar(self):
         return OmieApi().executar(self, self.empresa) 
+
+class OmieListarPosEstoque:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "estoque/consulta/"
+        self.call = 'ListarPosEstoque'
+        self.nPagina = 1
+        self.nRegPorPagina = 20
+        self.dDataPosicao = ""
+        self.cExibeTodos = "N"
+        self.codigo_local_estoque = OmieApi(empresa).local_de_estoque()
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
+
+    def todos(self):
+        nome_lista_omie = "produtos"
+        self.nRegPorPagina = 500
+        consulta = self.executar()
+        total_de_paginas = consulta['nTotPaginas']
+        lista = consulta[nome_lista_omie]
+        while self.nPagina < total_de_paginas:
+            self.nPagina += 1
+            produtos = self.executar()[nome_lista_omie]
+            for produto in produtos:
+                lista.append(produto)
+        return lista
 
 class OmieListarProdutos:
     def __init__(self, empresa):
@@ -229,3 +256,4 @@ class OmieApi:
     def secret(self): return os.getenv(self.empresa + '_SECRET')
     def cliente_imposto(self): return os.getenv(self.empresa + '_CLIENTE_IMPOSTO')
     def cenario_imposto(self): return os.getenv(self.empresa + '_CENARIO_IMPOSTO')
+    def local_de_estoque(self): return os.getenv(self.empresa + '_LOCAL_DE_ESTOQUE')

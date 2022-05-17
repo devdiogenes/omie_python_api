@@ -55,6 +55,7 @@ Uma maneira fácil de comunicar-se com a API da Omie, utilizando Python.
 + **ListarClientes** - executar(), todos()
 + **ListarLocaisEstoque** - executar()
 + **ListarImpostosCenario** - executar()
++ **ListarPosEstoque** - executar(), todos()
 + **ListarProdutos** - executar(), todos()
 + **ListarTabelaItens** - executar()
 + **ListarTabelasPreco** - executar()
