@@ -1,5 +1,5 @@
 # omie_python_api
-Uma maneira fácil de comunicar-se com a API da Omie, ERP brasileiro, utilizando Python.
+Uma maneira fácil de comunicar-se com a API da Omie, ERP brasileiro, utilizando Python. Obtenha diversos métodos pré configurados, utilizando apenas uma classe. 
 
 ## Configuração inicial
 
