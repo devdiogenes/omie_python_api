@@ -1,5 +1,6 @@
 import os
 import requests
+from datetime import date
 from dotenv import load_dotenv
 
 class Omie:
@@ -126,7 +127,7 @@ class OmieListarPosEstoque:
         self.call = 'ListarPosEstoque'
         self.nPagina = 1
         self.nRegPorPagina = 20
-        self.dDataPosicao = ""
+        self.dDataPosicao = date.today().strftime("%d/%m/%Y")
         self.cExibeTodos = "N"
         self.codigo_local_estoque = OmieApi(empresa).local_de_estoque()
 
