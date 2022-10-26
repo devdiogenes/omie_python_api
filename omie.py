@@ -236,6 +236,7 @@ class OmieApi:
         json_data['param'] = [parametros]
 
         response = requests.post('https://app.omie.com.br/api/v1/' + metodo_json['caminho'], json=json_data)
+        print(response.json())
         return response.json()
 
     def __converter_json(self, metodo):
