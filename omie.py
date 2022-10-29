@@ -158,7 +158,7 @@ class OmieListarProdutos:
         self.filtrar_apenas_omiepdv = 'N'
 
     def executar(self):
-        return OmieApi().executar(self, self.empresa)
+        return OmieApi().executar(self, self.empresa, console = False)
 
     def todos(self):
         nome_lista_omie = "produto_servico_cadastro"
@@ -218,7 +218,7 @@ class OmieApi:
         load_dotenv()
         self.empresa = empresa
 
-    def executar(self, metodo, empresa):
+    def executar(self, metodo, empresa, console = True):
 
         self.empresa = empresa
 
@@ -236,7 +236,7 @@ class OmieApi:
         json_data['param'] = [parametros]
 
         response = requests.post('https://app.omie.com.br/api/v1/' + metodo_json['caminho'], json=json_data)
-        print(response.json())
+        if console == True: print(response.json())
         return response.json()
 
     def __converter_json(self, metodo):
