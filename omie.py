@@ -26,8 +26,8 @@ class OmieAlterarProduto:
         self.call = "AlterarProduto"
         self.codigo_produto = 0
 
-    def executar(self):
-        return OmieApi().executar(self, self.empresa) 
+    def executar(self, console = True):
+        return OmieApi().executar(self, self.empresa, console = console) 
 
 class OmieConsultarCliente:
     def __init__(self, empresa):
