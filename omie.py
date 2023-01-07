@@ -183,8 +183,8 @@ class OmieListarTabelaItens:
         self.nCodTabPreco = 0
         self.cCodIntTabPreco = ""
 
-    def executar(self):
-        return OmieApi().executar(self, self.empresa) 
+    def executar(self, console = False):
+        return OmieApi().executar(self, self.empresa, console = console) 
 
     def todos(self, console = False):
         nome_lista_omie = "listaTabelaPreco"
