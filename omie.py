@@ -131,13 +131,13 @@ class OmieListarPosEstoque:
         self.cExibeTodos = "N"
         self.codigo_local_estoque = OmieApi(empresa).local_de_estoque()
 
-    def executar(self):
-        return OmieApi().executar(self, self.empresa) 
+    def executar(self, console = False):
+        return OmieApi().executar(self, self.empresa, console = console) 
 
-    def todos(self):
+    def todos(self, console = False):
         nome_lista_omie = "produtos"
         self.nRegPorPagina = 500
-        consulta = self.executar()
+        consulta = self.executar(console = console)
         total_de_paginas = consulta['nTotPaginas']
         lista = consulta[nome_lista_omie]
         while self.nPagina < total_de_paginas:
@@ -207,8 +207,8 @@ class OmieListarTabelasPreco:
         self.nPagina = 1
         self.nRegPorPagina = 20
 
-    def executar(self):
-        return OmieApi().executar(self, self.empresa) 
+    def executar(self, console = False):
+        return OmieApi().executar(self, self.empresa, console = console) 
 
 
 class OmieApi:
