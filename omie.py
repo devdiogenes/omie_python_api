@@ -218,7 +218,7 @@ class OmieApi:
         load_dotenv()
         self.empresa = empresa
 
-    def executar(self, metodo, empresa, console = True):
+    def executar(self, metodo, empresa, console = False):
 
         self.empresa = empresa
 
