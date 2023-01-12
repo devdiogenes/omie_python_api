@@ -181,7 +181,6 @@ class OmieListarTabelaItens:
         self.nPagina = 1
         self.nRegPorPagina = 20
         self.nCodTabPreco = 0
-        self.cCodIntTabPreco = ""
 
     def executar(self, console = False):
         return OmieApi().executar(self, self.empresa, console = console) 
