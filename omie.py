@@ -194,7 +194,8 @@ class OmieListarTabelaItens:
         lista = consulta[nome_lista_omie]['itensTabela']
         while self.nPagina < total_de_paginas:
             self.nPagina += 1
-            produtos = self.executar(console = console)[nome_lista_omie]['itensTabela']
+            busca = self.executar(console = console)
+            produtos = busca[nome_lista_omie]['itensTabela']
             for produto in produtos:
                 lista.append(produto)
         return lista
