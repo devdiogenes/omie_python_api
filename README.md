@@ -49,6 +49,7 @@ Uma maneira fácil de comunicar-se com a API da Omie, ERP brasileiro, utilizando
 
 ## Métodos já configurados: 
 
++ **AlterarPrecoItem** - executar()
 + **AlterarProduto** - executar()
 + **ConsultarCliente** - executar()
 + **ConsultarPedido** - executar()

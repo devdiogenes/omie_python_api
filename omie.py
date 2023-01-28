@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 class Omie:
     def __init__(self, empresa):
         
+        self.AlterarPrecoItem = OmieAlterarPrecoItem(empresa)
         self.AlterarProduto = OmieAlterarProduto(empresa)
         self.ConsultarCliente = OmieConsultarCliente(empresa)
         self.ConsultarPedido = OmieConsultarPedido(empresa)
@@ -18,6 +19,18 @@ class Omie:
         self.ListarProdutos = OmieListarProdutos(empresa)
         self.ListarTabelaItens = OmieListarTabelaItens(empresa)
         self.ListarTabelasPreco = OmieListarTabelasPreco(empresa)
+
+class OmieAlterarPrecoItem:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "produtos/tabelaprecos/"
+        self.call = "AlterarPrecoItem"
+        self.nCodTabPreco = 0
+        self.nCodProd = 0
+        self.nValorTabela = 0
+
+    def executar(self, console = True):
+        return OmieApi().executar(self, self.empresa, console = console) 
 
 class OmieAlterarProduto:
     def __init__(self, empresa):
@@ -234,7 +247,6 @@ class OmieApi:
         json_data['app_secret'] = self.secret()
         json_data['call'] = metodo_json['call']
         json_data['param'] = [parametros]
-
         response = requests.post('https://app.omie.com.br/api/v1/' + metodo_json['caminho'], json=json_data)
         if console == True: print(response.json())
         return response.json()
