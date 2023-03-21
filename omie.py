@@ -13,6 +13,7 @@ class Omie:
         self.ConsultarVendedor = OmieConsultarVendedor(empresa)
         self.ListarCenarios = OmieListarCenarios(empresa)
         self.ListarClientes = OmieListarClientes(empresa)
+        self.ListarAnexo = OmieListarAnexo(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarLocaisEstoque = OmieListarLocaisEstoque(empresa)
         self.ListarPosEstoque = OmieListarPosEstoque(empresa)
@@ -73,6 +74,19 @@ class OmieConsultarVendedor:
 
     def executar(self):
         return OmieApi().executar(self, self.empresa)  
+    
+class OmieListarAnexo:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "geral/anexo/"
+        self.call = "ListarAnexo"
+        self.nPagina = 1
+        self.nRegPorPagina = 500
+        self.nId = 0
+        self.cTabela = ""
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa)
 
 class OmieListarCenarios:
     def __init__(self, empresa):

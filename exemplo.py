@@ -1,4 +1,4 @@
-from omie import *
+from omie import Omie
 
 
 exemplo = Omie("EmpresaTeste").ListarClientes

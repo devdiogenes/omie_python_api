@@ -54,6 +54,7 @@ Uma maneira fácil de comunicar-se com a API da Omie, ERP brasileiro, utilizando
 + **ConsultarCliente** - executar()
 + **ConsultarPedido** - executar()
 + **ConsultarVendedor** - executar()
++ **ListarAnexo** - executar()
 + **ListarCenarios** - executar()
 + **ListarClientes** - executar(), todos()
 + **ListarLocaisEstoque** - executar()
