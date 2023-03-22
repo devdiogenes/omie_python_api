@@ -13,6 +13,7 @@ class Omie:
         self.ConsultarVendedor = OmieConsultarVendedor(empresa)
         self.ListarCenarios = OmieListarCenarios(empresa)
         self.ListarClientes = OmieListarClientes(empresa)
+        self.ListarContasPagar = OmieListarContasPagar(empresa)
         self.ListarAnexo = OmieListarAnexo(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarLocaisEstoque = OmieListarLocaisEstoque(empresa)
@@ -119,9 +120,33 @@ class OmieListarClientes:
         lista = consulta[nome_lista_omie]
         while self.pagina < total_de_paginas:
             self.pagina += 1
-            produtos = self.executar()[nome_lista_omie]
-            for produto in produtos:
-                lista.append(produto)
+            registros = self.executar()[nome_lista_omie]
+            for registro in registros:
+                lista.append(registro)
+        return lista
+    
+class OmieListarContasPagar:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "financas/contapagar/"
+        self.call = "ListarContasPagar"
+        self.pagina = 1
+        self.registros_por_pagina = 20
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
+    
+    def todos(self):
+        nome_lista_omie = "conta_pagar_cadastro"
+        self.registros_por_pagina = 500
+        consulta = self.executar()
+        total_de_paginas = consulta['total_de_paginas']
+        lista = consulta[nome_lista_omie]
+        while self.pagina < total_de_paginas:
+            self.pagina += 1
+            registros = self.executar()[nome_lista_omie]
+            for registro in registros:
+                lista.append(registro)
         return lista
 
 class OmieListarImpostosCenario:
@@ -239,7 +264,7 @@ class OmieListarTabelasPreco:
         return OmieApi().executar(self, self.empresa, console = console) 
     
 class OmieObterAnexo:
-    def __init(self, empresa):
+    def __init__(self, empresa):
         self.empresa = empresa
         self.caminho = "geral/anexo/"
         self.cCodIntAnexo = "",

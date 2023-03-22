@@ -1,6 +1,8 @@
 # omie_python_api
 Uma maneira fácil de comunicar-se com a API da Omie, ERP brasileiro, utilizando Python. Obtenha diversos métodos pré configurados, utilizando apenas uma classe. 
 
+Documentação da API: http://developer.omie.com.br/service-list/
+
 ## Configuração inicial
 
 ### Primeiramente, crie um arquivo .env contendo os seguintes dados: 
@@ -57,6 +59,7 @@ Uma maneira fácil de comunicar-se com a API da Omie, ERP brasileiro, utilizando
 + **ListarAnexo** - executar()
 + **ListarCenarios** - executar()
 + **ListarClientes** - executar(), todos()
++ **ListarContasPagar** - executar(), todos()
 + **ListarLocaisEstoque** - executar()
 + **ListarImpostosCenario** - executar()
 + **ListarPosEstoque** - executar(), todos()
