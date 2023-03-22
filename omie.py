@@ -20,6 +20,7 @@ class Omie:
         self.ListarProdutos = OmieListarProdutos(empresa)
         self.ListarTabelaItens = OmieListarTabelaItens(empresa)
         self.ListarTabelasPreco = OmieListarTabelasPreco(empresa)
+        self.ObterAnexo = OmieObterAnexo(empresa)
 
 class OmieAlterarPrecoItem:
     def __init__(self, empresa):
@@ -236,7 +237,19 @@ class OmieListarTabelasPreco:
 
     def executar(self, console = False):
         return OmieApi().executar(self, self.empresa, console = console) 
+    
+class OmieObterAnexo:
+    def __init(self, empresa):
+        self.empresa = empresa
+        self.caminho = "geral/anexo/"
+        self.cCodIntAnexo = "",
+        self.cTabela = "",
+        self.nId = 0,
+        self.nIdAnexo = 0,
+        self.cNomeArquivo = ""
 
+    def executar(self, console = False):
+        return OmieApi().executar(self, self.empresa, console = console) 
 
 class OmieApi:
     def __init__(self, empresa = ""):

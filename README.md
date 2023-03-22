@@ -63,3 +63,4 @@ Uma maneira fácil de comunicar-se com a API da Omie, ERP brasileiro, utilizando
 + **ListarProdutos** - executar(), todos()
 + **ListarTabelaItens** - executar(), todos()
 + **ListarTabelasPreco** - executar()
++ **ObterAnexo** - executar()
