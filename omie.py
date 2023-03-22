@@ -87,8 +87,8 @@ class OmieListarAnexo:
         self.nId = 0
         self.cTabela = ""
 
-    def executar(self):
-        return OmieApi().executar(self, self.empresa)
+    def executar(self, console = False):
+        return OmieApi().executar(self, self.empresa, console = console)
 
 class OmieListarCenarios:
     def __init__(self, empresa):
