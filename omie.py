@@ -14,6 +14,7 @@ class Omie:
         self.ListarCenarios = OmieListarCenarios(empresa)
         self.ListarClientes = OmieListarClientes(empresa)
         self.ListarContasPagar = OmieListarContasPagar(empresa)
+        self.ListarContasReceber = OmieListarContasReceber(empresa)
         self.ListarAnexo = OmieListarAnexo(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarLocaisEstoque = OmieListarLocaisEstoque(empresa)
@@ -148,6 +149,31 @@ class OmieListarContasPagar:
             for registro in registros:
                 lista.append(registro)
         return lista
+    
+class OmieListarContasReceber:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "financas/contareceber/"
+        self.call = "ListarContasReceber"
+        self.pagina = 1
+        self.registros_por_pagina = 20
+        self.apenas_importado_api = "N"
+
+    def executar(self):
+        return OmieApi().executar(self, self.empresa) 
+    
+    def todos(self):
+        nome_lista_omie = "conta_receber_cadastro"
+        self.registros_por_pagina = 500
+        consulta = self.executar()
+        total_de_paginas = consulta['total_de_paginas']
+        lista = consulta[nome_lista_omie]
+        while self.pagina < total_de_paginas:
+            self.pagina += 1
+            registros = self.executar()[nome_lista_omie]
+            for registro in registros:
+                lista.append(registro)
+        return lista
 
 class OmieListarImpostosCenario:
     def __init__(self, empresa):
@@ -267,6 +293,7 @@ class OmieObterAnexo:
     def __init__(self, empresa):
         self.empresa = empresa
         self.caminho = "geral/anexo/"
+        self.call = "ObterAnexo"
         self.cCodIntAnexo = "",
         self.cTabela = "",
         self.nId = 0,

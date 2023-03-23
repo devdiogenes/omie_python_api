@@ -60,6 +60,7 @@ Documentação da API: http://developer.omie.com.br/service-list/
 + **ListarCenarios** - executar()
 + **ListarClientes** - executar(), todos()
 + **ListarContasPagar** - executar(), todos()
++ **ListarContasReceber** - executar(), todos()
 + **ListarLocaisEstoque** - executar()
 + **ListarImpostosCenario** - executar()
 + **ListarPosEstoque** - executar(), todos()
