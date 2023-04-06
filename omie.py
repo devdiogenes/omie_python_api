@@ -208,7 +208,7 @@ class OmieListarPedidos:
         self.call = "ListarPedidos"
         self.pagina = 1
         self.registros_por_pagina = 100
-        self.apenas_importados_api = "N"
+        self.apenas_importado_api = "N"
 
     def executar(self, console = False): 
         return OmieApi().executar(self, self.empresa, console = console)
