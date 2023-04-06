@@ -18,10 +18,12 @@ class Omie:
         self.ListarAnexo = OmieListarAnexo(empresa)
         self.ListarImpostosCenario = OmieListarImpostosCenario(empresa)
         self.ListarLocaisEstoque = OmieListarLocaisEstoque(empresa)
+        self.ListarPedidos = OmieListarPedidos(empresa)
         self.ListarPosEstoque = OmieListarPosEstoque(empresa)
         self.ListarProdutos = OmieListarProdutos(empresa)
         self.ListarTabelaItens = OmieListarTabelaItens(empresa)
         self.ListarTabelasPreco = OmieListarTabelasPreco(empresa)
+        self.ListarVendedores = OmieListarVendedores(empresa)
         self.ObterAnexo = OmieObterAnexo(empresa)
 
 class OmieAlterarPrecoItem:
@@ -198,6 +200,31 @@ class OmieListarLocaisEstoque:
 
     def executar(self):
         return OmieApi().executar(self, self.empresa) 
+    
+class OmieListarPedidos:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "produtos/pedido/"
+        self.call = "ListarPedidos"
+        self.pagina = 1
+        self.registros_por_pagina = 100
+        self.apenas_importados_api = "N"
+
+    def executar(self, console = False): 
+        return OmieApi().executar(self, self.empresa, console = console)
+    
+    def todos(self, console = False):
+        nome_lista_omie = "pedido_venda_produto"
+        self.registros_por_pagina = 500
+        consulta = self.executar(console = console)
+        total_de_paginas = consulta['total_de_paginas']
+        lista = consulta[nome_lista_omie]
+        while self.pagina < total_de_paginas:
+            self.pagina += 1
+            lista_pagina = self.executar(console = console)[nome_lista_omie]
+            for ind in lista_pagina:
+                lista.append(ind)
+        return lista
 
 class OmieListarPosEstoque:
     def __init__(self, empresa):
@@ -236,18 +263,18 @@ class OmieListarProdutos:
         self.apenas_importado_api = 'N'
         self.filtrar_apenas_omiepdv = 'N'
 
-    def executar(self):
-        return OmieApi().executar(self, self.empresa, console = False)
+    def executar(self, console = False):
+        return OmieApi().executar(self, self.empresa, console = console)
 
-    def todos(self):
+    def todos(self, console = False):
         nome_lista_omie = "produto_servico_cadastro"
         self.registros_por_pagina = 500
-        consulta = self.executar()
+        consulta = self.executar(console = console)
         total_de_paginas = consulta['total_de_paginas']
         lista = consulta[nome_lista_omie]
         while self.pagina < total_de_paginas:
             self.pagina += 1
-            produtos = self.executar()[nome_lista_omie]
+            produtos = self.executar(console = console)[nome_lista_omie]
             for produto in produtos:
                 lista.append(produto)
         return lista
@@ -285,6 +312,18 @@ class OmieListarTabelasPreco:
         self.call = 'ListarTabelasPreco'
         self.nPagina = 1
         self.nRegPorPagina = 20
+
+    def executar(self, console = False):
+        return OmieApi().executar(self, self.empresa, console = console) 
+    
+class OmieListarVendedores:
+    def __init__(self, empresa):
+        self.empresa = empresa
+        self.caminho = "geral/vendedores/"
+        self.call = "ListarVendedores"
+        self.pagina = "1"
+        self.registros_por_pagina = 100
+        self.apenas_importado_api = "N"
 
     def executar(self, console = False):
         return OmieApi().executar(self, self.empresa, console = console) 
